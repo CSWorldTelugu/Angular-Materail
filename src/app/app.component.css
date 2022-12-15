@@ -3,7 +3,7 @@
 }
 
 table {
-    width: 60%;
+    width: 100%;
 }
 
 th {
@@ -16,4 +16,10 @@ th {
 
 td {
     font-size: 14px;
+    min-width: 100px;
+
+}
+
+td.mat-cell {
+    padding: 0 10px;
 }

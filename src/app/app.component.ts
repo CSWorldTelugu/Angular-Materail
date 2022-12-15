@@ -1,31 +1,38 @@
 import { HttpBackend, HttpClient } from '@angular/common/http';
-import { Component, OnInit} from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+import { Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
-
-``
-
+MatTableDataSource
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+
+ @ViewChild(MatPaginator)paginator:MatPaginator
+
+
   
   constructor(private http:HttpClient) {
 
   }
-  users:any;
-  columns= ['id','name','email','phone']
+   posts:any;
+   columns=['id','title','body']
+  
+
   ngOnInit(): void {
 
-    this.http.get("https://jsonplaceholder.typicode.com/users")
+    this.http.get('https://jsonplaceholder.typicode.com/posts')
     .subscribe(
-      (data)=>{
-        console.log(data);
-        this.users=data;
+      (data:any)=>{
+         this.posts= new MatTableDataSource(data);
+         this.posts.paginator= this.paginator
       }
     )
+
+
    
     
   }
