@@ -1,6 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Component} from '@angular/core';
+import { HttpBackend, HttpClient } from '@angular/common/http';
+import { Component, OnInit} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+
 
 ``
 
@@ -9,13 +10,24 @@ import { NavigationEnd, Router } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent  {
+export class AppComponent implements OnInit {
   
- showHeader=true;
+  constructor(private http:HttpClient) {
 
-  constructor(private router:Router) {
+  }
+  users:any;
+  columns= ['id','name','email','phone']
+  ngOnInit(): void {
 
-
+    this.http.get("https://jsonplaceholder.typicode.com/users")
+    .subscribe(
+      (data)=>{
+        console.log(data);
+        this.users=data;
+      }
+    )
+   
+    
   }
    
 
