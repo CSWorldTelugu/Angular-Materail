@@ -1,41 +1,44 @@
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-MatTableDataSource
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
-
- @ViewChild(MatPaginator)paginator:MatPaginator
+  @ViewChild(MatSort)matsort:MatSort
 
 
   
   constructor(private http:HttpClient) {
 
   }
-   posts:any;
-   columns=['id','title','body']
-  
 
+  
+  users:any;
+  columns =['id','name','email','phone']
   ngOnInit(): void {
 
-    this.http.get('https://jsonplaceholder.typicode.com/posts')
+    this.http.get('https://jsonplaceholder.typicode.com/users')
     .subscribe(
       (data:any)=>{
-         this.posts= new MatTableDataSource(data);
-         this.posts.paginator= this.paginator
+        this.users= new MatTableDataSource(data);
+        this.users.sort= this.matsort
+
       }
     )
 
-
-   
+  
     
   }
+
+  filter(e:any){
+    this.users.filter=e.target.value
+  }
+
    
 
    

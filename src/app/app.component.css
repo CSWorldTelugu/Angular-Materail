@@ -6,20 +6,7 @@ table {
     width: 100%;
 }
 
-th {
-    background-color: #00afa3;
-    color: #fff;
-    font-size: 16px;
-}
-
-
-
-td {
-    font-size: 14px;
-    min-width: 100px;
-
-}
-
-td.mat-cell {
-    padding: 0 10px;
+.input {
+    position: relative;
+    left: 50%;
 }
