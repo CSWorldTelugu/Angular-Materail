@@ -1,19 +1,19 @@
-<mat-form-field class="example-chip-list" appearance="fill">
-    <mat-label>Favorite languages</mat-label>
-    <mat-chip-list #chipList aria-label="Fruit selection">
-        <mat-chip *ngFor="let lang of languages" (removed)="remove(lang)">
-            {{lang}}
-            <button matChipRemove>
-                <mat-icon>cancel</mat-icon>
-            </button>
-        </mat-chip>
-        <input placeholder="New Laguage..." #langInput [formControl]="langCtrl" [matAutocomplete]="fl"
-            [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-            (matChipInputTokenEnd)="add($event)">
-    </mat-chip-list>
-    <mat-autocomplete #fl="matAutocomplete" (optionSelected)="selected($event)">
-        <mat-option *ngFor="let lang of filteredLangs | async" [value]="lang">
-            {{lang}}
-        </mat-option>
-    </mat-autocomplete>
-</mat-form-field>
+<div class="wrapper">
+    <ng-container *ngFor="let p of products">
+        <mat-card class="example-card">
+            <mat-card-header>
+                <mat-card-title>{{p['title'] | slice:0:30}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="p['image']" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <p>
+                    {{p['description']}}
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary">Add to Cart</button>
+                <button mat-raised-button>Buy Now</button>
+            </mat-card-actions>
+        </mat-card>
+    </ng-container>
+</div>

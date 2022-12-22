@@ -9,11 +9,10 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { MatChipsModule } from '@angular/material/chips';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,18 +27,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatChipsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatAutocompleteModule
-
-
-
-
-
-
-
+    MatCardModule,
+    MatButtonModule
 
 
   ],
