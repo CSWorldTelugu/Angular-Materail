@@ -1,60 +1,68 @@
-import { HttpBackend, HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewChild,AfterViewInit} from '@angular/core';
-import { MatSort } from '@angular/material/sort';
-import { MatTableDataSource } from '@angular/material/table';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
-  @ViewChild(MatSort)matsort:MatSort
+export class AppComponent {
 
+  separatorKeysCodes: number[] = [ENTER, COMMA];
+  langCtrl = new FormControl();
+  filteredLangs: Observable<string[]>;
+  languages: string[] = ['HTML'];
+  allLanguages: string[] = ['HTML', 'CSS', 'JavaScript', 'PHP', 'Python'];
 
-  
-  constructor(private http:HttpClient) {
+  @ViewChild('langInput') langInput: ElementRef<HTMLInputElement>;
 
+  constructor() {
+    this.filteredLangs = this.langCtrl.valueChanges.pipe(
+      startWith(null),
+      map((fruit: string | null) => (fruit ? this._filter(fruit) : this.allLanguages.slice())),
+    );
   }
 
-  
-  users:any;
-  columns =['id','name','email','phone']
-  ngOnInit(): void {
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
 
-    this.http.get('https://jsonplaceholder.typicode.com/users')
-    .subscribe(
-      (data:any)=>{
-        this.users= new MatTableDataSource(data);
-        this.users.sort= this.matsort
+    // Add our fruit
+    if (value) {
+      this.languages.push(value);
+    }
 
-      }
-    )
+    // Clear the input value
+    event.chipInput!.clear();
 
-  
-    
+    this.langCtrl.setValue(null);
   }
 
-  filter(e:any){
-    this.users.filter=e.target.value
+  remove(fruit: string): void {
+    const index = this.languages.indexOf(fruit);
+
+    if (index >= 0) {
+      this.languages.splice(index, 1);
+    }
   }
 
-   
-
-   
+  selected(event: MatAutocompleteSelectedEvent): void {
+    this.languages.push(event.option.viewValue);
+    this.langInput.nativeElement.value = '';
+    this.langCtrl.setValue(null);
   }
 
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
 
+    return this.allLanguages.filter(fruit => fruit.toLowerCase().includes(filterValue));
+  }
 
-
-  
-
-
-
-
-
-
-
+}
 
 
 
@@ -64,191 +72,20 @@ export class AppComponent implements OnInit {
 
 
 
-    // regForm:FormGroup
-
-    // this.regForm = new FormGroup({
-    //   uname:new FormControl(null,[Validators.required,Validators.minLength(4)]),
-    //   email:new FormControl(null,[Validators.required,Validators.email]),
-    //   password:new FormControl(null,[Validators.required,Validators.minLength(8)]),
-    //   cpassword:new FormControl(null,[Validators.required]),
-    //   gender:new FormControl(),
-    //   subscribe:new FormControl()
-    // },this.passwordMatch);
-
-  // passwordMatch(rf:any){
-  //   let password = rf.controls['password'].value;
-  //   let cpassword = rf.controls['cpassword'].value;
-
-  //   if(password===cpassword){
-  //     return null
-  //   }
-  //   else{
-  //     return{
-  //       'passwordsMatch':true
-  //     }
-  //   }
-
-  // }
-
-  // show(){
-  //   console.log(this.regForm);
-  //   this.regForm.reset()
-  // }
-  // getC(control:any){
-
-  //   return this.regForm.get(control)
-
-  // }
-  // getE(control:any){
-
-  //   return this.regForm.get(control)?.['errors']
-
-  // }
 
 
 
-  
-  // states = [
-  //   {
-  //     id: 1,
-  //     name: "Andhra Pradesh",
-  //     code: "AP"
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "Telangana",
-  //     code: "TS"
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "Tamil Nadu",
-  //     code: "TN"
-  //   },
-  //   {
-  //     id: 4,
-  //     name: " Karnataka",
-  //     code: "KS"
-  //   },
-  // ]
-
-  // districts = [
-  //   {
-  //     id: 1,
-  //     name: "Krishna",
-  //     s_id: 1
-  //   },
-  //   {
-  //     id: 2,
-  //     name: "East Godavari",
-  //     s_id: 1
-  //   },
-  //   {
-  //     id: 3,
-  //     name: "West Godavari",
-  //     s_id: 1
-  //   },
-  //   {
-  //     id: 4,
-  //     name: "Guntur",
-  //     s_id: 1
-  //   },
-  //   {
-  //     id: 5,
-  //     name: "Visakhapatnam",
-  //     s_id: 1
-  //   },
-  //   {
-  //     id: 6,
-  //     name: "Hyderabad",
-  //     s_id: 2
-  //   },
-  //   {
-  //     id: 7,
-  //     name: "Warangal",
-  //     s_id: 2
-  //   },
-  //   {
-  //     id: 8,
-  //     name: "Karimnagar",
-  //     s_id: 2
-  //   },
-  //   {
-  //     id: 9,
-  //     name: "Medak",
-  //     s_id: 2
-  //   },
-  //   {
-  //     id: 10,
-  //     name: "Suryapet",
-  //     s_id: 2
-  //   },
-  //   {
-  //     id: 11,
-  //     name: "Chennai",
-  //     s_id: 3
-  //   },
-  //   {
-  //     id: 12,
-  //     name: "Coimbatore",
-  //     s_id: 3
-  //   },
-  //   {
-  //     id: 13,
-  //     name: "Vellore",
-  //     s_id: 3
-  //   },
-  //   {
-  //     id: 14,
-  //     name: "Madurai",
-  //     s_id: 3
-  //   },
-  //   {
-  //     id: 15,
-  //     name: "Thanjavur",
-  //     s_id: 3
-  //   },
-  //   {
-  //     id: 16,
-  //     name: "Mysuru",
-  //     s_id: 4
-  //   },
-  //   {
-  //     id: 17,
-  //     name: "Raichur",
-  //     s_id: 4
-  //   },
-  //   {
-  //     id: 17,
-  //     name: "Bengaluru",
-  //     s_id: 4
-  //   },
-  //   {
-  //     id: 18,
-  //     name: "Ballari",
-  //     s_id: 4
-  //   },
-  //   {
-  //     id: 19,
-  //     name: "Udupi",
-  //     s_id: 4
-  //   },
-  //   {
-  //     id: 20,
-  //     name: "Koppal",
-  //     s_id: 4
-  //   }
-  // ]
-
-  // filteredDistricts = this.districts;
 
 
-  // updateDistricts(e: any) {
-  //   let sId = e.target.value;
-  //   this.filteredDistricts = this.districts.filter(
-  //     (d) => d['s_id'] == sId
 
-  //   )
-  // }
+
+
+
+
+
+
+
+
 
 
 

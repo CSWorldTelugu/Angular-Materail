@@ -1,12 +1,8 @@
 .wrapper {
-    padding: 20px;
+    width: 600px;
+    margin: 20px;
 }
 
-table {
-    width: 100%;
-}
-
-.input {
-    position: relative;
-    left: 50%;
+mat-form-field {
+    width: 600px;
 }

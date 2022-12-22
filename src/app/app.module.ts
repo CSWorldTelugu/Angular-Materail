@@ -9,33 +9,11 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
-import { MatTableModule } from '@angular/material/table';
-import { MatSortModule } from '@angular/material/sort';
+import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-
-const routes: Routes = [
-
-  {
-    path: "", redirectTo: "/home", pathMatch: "full"
-
-  },
-  {
-    path: "home", component: HomeComponent
-  },
-  {
-    path: "profile", component: ProfileComponent
-  },
-  {
-    path: 'about', component: AboutComponent
-  },
-  {
-    path: 'contact-us', component: ContactUsComponent
-  }
-
-
-]
-
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,12 +27,15 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(routes),
     BrowserAnimationsModule,
-    MatTableModule,
-    MatSortModule,
+    MatChipsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatAutocompleteModule
+
+
+
 
 
 
