@@ -1,26 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  constructor(private http: HttpClient) {
-
-  }
-  products: any
-  ngOnInit(): void {
-    this.http.get('https://fakestoreapi.com/products/category/electronics')
-      .subscribe(
-        (data) => {
-          console.log(data)
-          this.products = data
-        }
-      )
-  }
 
 
 
