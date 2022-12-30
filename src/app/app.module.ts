@@ -5,14 +5,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { FormComponent } from './form/form.component'
-
 @NgModule({
   declarations: [
     AppComponent,
-    FormComponent
 
 
   ],
@@ -22,8 +20,11 @@ import { FormComponent } from './form/form.component'
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatDialogModule,
+    MatMenuModule,
+    MatIconModule,
     MatButtonModule
+
+
 
 
 

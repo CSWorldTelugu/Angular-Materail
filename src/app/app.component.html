@@ -1,3 +1,26 @@
-<button mat-raised-button color="primary" (click)=" openPopUp()">open</button>
+<div class="wrapper">
+    <button mat-icon-button [matMenuTriggerFor]="langs"><mat-icon>more_vert</mat-icon></button>
+    <mat-menu #langs="matMenu" yPosition="above">
+        <button mat-menu-item [matMenuTriggerFor]="frontend">Frontend</button>
+        <button mat-menu-item [matMenuTriggerFor]="backend">Backend</button>
 
-<div>{{result}}</div>
+    </mat-menu>
+
+    <mat-menu #frontend="matMenu">
+
+        <button mat-menu-item>
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </button>
+        <button mat-menu-item>CSS</button>
+        <button mat-menu-item>JS</button>
+
+    </mat-menu>
+    <mat-menu #backend="matMenu">
+
+        <button mat-menu-item>php</button>
+        <button mat-menu-item>python</button>
+        <button mat-menu-item>node js</button>
+
+    </mat-menu>
+</div>
