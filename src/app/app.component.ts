@@ -1,8 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-
-
-
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,18 +8,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
-  constructor() {
+
+
+  constructor(private snackbar: MatSnackBar) { }
+
+  openSnackBar() {
+
+    this.snackbar.openFromComponent(
+      SnackbarComponent
+
+    )
 
   }
-
-
-
-
-
-
-
-
-
 
 
 }
