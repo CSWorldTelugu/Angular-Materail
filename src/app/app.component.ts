@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { SnackbarComponent } from './snackbar/snackbar.component';
+import { FormBuilder, Validators } from '@angular/forms';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,17 +9,17 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
 export class AppComponent {
 
 
+  constructor(private fb: FormBuilder) { }
 
-  constructor(private snackbar: MatSnackBar) { }
+  personalDetails = this.fb.group({
+    firstName: ['', Validators.required]
+  })
 
-  openSnackBar() {
+  contactDetails = this.fb.group({
+    mobileNumber: [null, Validators.required]
+  })
 
-    this.snackbar.openFromComponent(
-      SnackbarComponent
 
-    )
-
-  }
 
 
 }

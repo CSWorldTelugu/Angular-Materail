@@ -6,18 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatCardModule } from '@angular/material/card';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { SnackbarComponent } from './snackbar/snackbar.component';
-
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatButtonModule } from '@angular/material/button'
+import { MatInputModule } from '@angular/material/input'
 @NgModule({
   declarations: [
     AppComponent,
-    SnackbarComponent,
 
 
   ],
@@ -27,22 +21,10 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatMenuModule,
-    MatIconModule,
+    MatStepperModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatSnackBarModule
-
-
-
-
-
-
-
-
-
+    MatInputModule
 
   ],
   providers: [],

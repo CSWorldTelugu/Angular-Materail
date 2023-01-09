@@ -1,2 +1,50 @@
-<button mat-stroked-button (click)="openSnackBar()">
-    Show snack-bar</button>
+<div class="wrapper">
+    <mat-stepper #stepper labelPosition="bottom" linear>
+        <mat-step label="Personal Details" [stepControl]="personalDetails" [editable]="false">
+            <form [formGroup]="personalDetails">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Your Name</mat-label>
+                    <input matInput formControlName="firstName">
+                </mat-form-field>
+
+                <div>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+            </form>
+
+
+
+
+        </mat-step>
+
+
+        <mat-step label="Contact Details" [stepControl]="contactDetails" [editable]="true">
+
+
+            <form [formGroup]="contactDetails">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Your Mobile Number</mat-label>
+                    <input matInput formControlName="mobileNumber" type="number">
+                </mat-form-field>
+
+
+                <div>
+                    <button mat-raised-button color="accent" matStepperPrevious>Previous</button>
+                    <button mat-raised-button color="primary" matStepperNext>Next</button>
+                </div>
+
+            </form>
+
+
+
+        </mat-step>
+        <mat-step label="Confirm">
+
+            <p>Completed</p>
+            <button mat-raised-button color="accent" matStepperPrevious>Previous</button>
+            <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
+
+        </mat-step>
+
+    </mat-stepper>
+</div>
