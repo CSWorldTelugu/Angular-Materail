@@ -1,50 +1,32 @@
-<div class="wrapper">
-    <mat-stepper #stepper labelPosition="bottom" linear>
-        <mat-step label="Personal Details" [stepControl]="personalDetails" [editable]="false">
-            <form [formGroup]="personalDetails">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Your Name</mat-label>
-                    <input matInput formControlName="firstName">
-                </mat-form-field>
+<mat-tab-group animationDuration="200" mat-align-tabs="center">
+    <mat-tab label="Profile">
+        <div class="content">
+            <h1>This is Profile tab</h1>
 
-                <div>
-                    <button mat-raised-button color="primary" matStepperNext>Next</button>
-                </div>
-            </form>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias ducimus laboriosam cupiditate quaerat
+                ipsa
+                deserunt, doloribus, dolore alias voluptatem in, error nobis quos enim facere odio! Nostrum, ducimus
+                reprehenderit. Quod.</p>
+        </div>
+    </mat-tab>
+    <mat-tab label="Notifications">
+        <div class="content">
+            <h1>This is notifications tab</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit eius tempora
+                perspiciatis,
+                accusantium distinctio architecto sequi voluptatum qui reiciendis quae dolorem ullam molestiae inventore
+                fugit consectetur, maxime quibusdam minima?</p>
+        </div>
+    </mat-tab>
+    <mat-tab label="Requests">
+        <div class="content">
+            <h1>This is Requests tab</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus reprehenderit eius tempora
+                perspiciatis,
+                accusantium distinctio architecto sequi voluptatum qui reiciendis quae dolorem ullam molestiae inventore
+                fugit consectetur, maxime quibusdam minima?</p>
+        </div>
 
+    </mat-tab>
 
-
-
-        </mat-step>
-
-
-        <mat-step label="Contact Details" [stepControl]="contactDetails" [editable]="true">
-
-
-            <form [formGroup]="contactDetails">
-                <mat-form-field class="example-full-width">
-                    <mat-label>Your Mobile Number</mat-label>
-                    <input matInput formControlName="mobileNumber" type="number">
-                </mat-form-field>
-
-
-                <div>
-                    <button mat-raised-button color="accent" matStepperPrevious>Previous</button>
-                    <button mat-raised-button color="primary" matStepperNext>Next</button>
-                </div>
-
-            </form>
-
-
-
-        </mat-step>
-        <mat-step label="Confirm">
-
-            <p>Completed</p>
-            <button mat-raised-button color="accent" matStepperPrevious>Previous</button>
-            <button mat-raised-button color="primary" (click)="stepper.reset()">Reset</button>
-
-        </mat-step>
-
-    </mat-stepper>
-</div>
+</mat-tab-group>

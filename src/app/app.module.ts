@@ -5,10 +5,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatStepperModule } from '@angular/material/stepper';
-import { MatButtonModule } from '@angular/material/button'
-import { MatInputModule } from '@angular/material/input'
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,10 +18,7 @@ import { MatInputModule } from '@angular/material/input'
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatStepperModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule
+    MatTabsModule
 
   ],
   providers: [],

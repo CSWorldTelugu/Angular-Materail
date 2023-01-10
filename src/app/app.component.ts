@@ -11,13 +11,6 @@ export class AppComponent {
 
   constructor(private fb: FormBuilder) { }
 
-  personalDetails = this.fb.group({
-    firstName: ['', Validators.required]
-  })
-
-  contactDetails = this.fb.group({
-    mobileNumber: [null, Validators.required]
-  })
 
 
 
